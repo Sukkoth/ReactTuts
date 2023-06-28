@@ -1,9 +1,12 @@
 .main {
-    width: 300px;
+    width: 400px;
     padding: 40px;
     margin: auto;
     box-shadow: 0px 0px 7px 1px rgb(207, 212, 202);
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title,
@@ -22,12 +25,11 @@
 
 .buttons {
     width: 150px;
-    margin: auto;
     display: flex;
     justify-content: space-between;
 }
 
-.buttons button {
+button {
     color: white;
     height: 40px;
     width: 60px;
@@ -35,14 +37,6 @@
     cursor: pointer;
     border-radius: 10px;
     font-size: 20px;
-}
-
-.add:hover {
-    box-shadow: 0 0 6px 2px rgb(199, 218, 218);
-}
-
-.sub:hover {
-    box-shadow: 0 0 6px 2px rgb(243, 141, 123);
 }
 
 .add {
@@ -53,4 +47,22 @@
 .sub {
     border-color: rgb(245, 72, 42);
     background-color: rgb(245, 72, 42);
+}
+
+.reset {
+    width: 90px;
+    background-color: rgb(26, 26, 126);
+    margin-top: 30px;
+}
+
+.add:hover {
+    box-shadow: 0 0 6px 3px rgb(199, 218, 218);
+}
+
+.sub:hover {
+    box-shadow: 0 0 6px 3px rgb(243, 141, 123);
+}
+
+.reset:hover {
+    box-shadow: 0 0 6px 3px rgb(137, 137, 214);
 }
