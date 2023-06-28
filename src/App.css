@@ -1,0 +1,56 @@
+.main {
+    width: 300px;
+    padding: 40px;
+    margin: auto;
+    box-shadow: 0px 0px 7px 1px rgb(207, 212, 202);
+    margin-top: 50px;
+}
+
+.title,
+.count {
+    text-align: center;
+    margin-top: 0px;
+}
+
+.title {
+    margin-bottom: 45px;
+}
+
+.count {
+    margin-bottom: 30px;
+}
+
+.buttons {
+    width: 150px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons button {
+    color: white;
+    height: 40px;
+    width: 60px;
+    border-width: 1px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.add:hover {
+    box-shadow: 0 0 6px 2px rgb(199, 218, 218);
+}
+
+.sub:hover {
+    box-shadow: 0 0 6px 2px rgb(243, 141, 123);
+}
+
+.add {
+    background-color: teal;
+    border-color: teal;
+}
+
+.sub {
+    border-color: rgb(245, 72, 42);
+    background-color: rgb(245, 72, 42);
+}
