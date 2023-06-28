@@ -3,15 +3,7 @@ import tasks from './tasks.css';
 import Task from './Task';
 import sampleData from '../sampleData';
 
-const Tasks = () => {
-    const [tasks, setTasks] = useState([]);
-
-    useEffect(() => {
-        const localData = JSON.parse(localStorage.getItem('tasks'));
-        if (!localData)
-            localStorage.setItem('tasks', JSON.stringify(sampleData));
-        setTasks(localData || sampleData);
-    }, []);
+const Tasks = ({ tasks }) => {
     return (
         <>
             <div className='tasksHeader'>

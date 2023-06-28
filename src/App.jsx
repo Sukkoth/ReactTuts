@@ -12,10 +12,23 @@ const setInitialTheme = () => {
 
 function App() {
     const [backgroundTheme, setBackgroundTheme] = useState(setInitialTheme);
+    const [tasks, setTasks] = useState([]);
+
+    const handleAddTask = (task) => {
+        //TODO continue from, here
+    };
+
+    useEffect(() => {
+        const localData = JSON.parse(localStorage.getItem('tasks'));
+        if (!localData)
+            localStorage.setItem('tasks', JSON.stringify(sampleData));
+        setTasks(localData || sampleData);
+    }, []);
 
     useEffect(() => {
         localStorage.setItem('theme', backgroundTheme || 'theme1');
     }, [backgroundTheme]);
+
     return (
         <div className={`container ${backgroundTheme}`}>
             <main className='main'>
@@ -23,8 +36,11 @@ function App() {
                     backgroundTheme={backgroundTheme}
                     setBackgroundTheme={setBackgroundTheme}
                 />
-                <AddTask />
-                <Tasks />
+                <AddTask
+                    handleAddTask={handleAddTask}
+                    tasksLength={tasks.length}
+                />
+                <Tasks tasks={tasks} />
             </main>
         </div>
     );
