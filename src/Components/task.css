@@ -1,0 +1,44 @@
+.task {
+    width: calc(100% / 3.4);
+    margin-top: 15px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding-inline: 10px;
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px rgb(198, 196, 196);
+    border-radius: 6px;
+}
+
+.pending {
+    border-left: solid 6px rgb(106, 79, 255);
+}
+
+.completed {
+    border-left: solid 6px rgb(255, 79, 114);
+}
+
+.taskName {
+    font-weight: bold;
+}
+
+.reminder {
+    color: rgb(148, 146, 146);
+    font-size: 13px;
+}
+
+.actions {
+    margin-top: 10px;
+    display: flex;
+}
+
+.actions .edit {
+    color: rgb(106, 79, 255);
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.actions .delete {
+    color: rgb(255, 79, 114);
+    cursor: pointer;
+}

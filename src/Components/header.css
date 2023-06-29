@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 40px;
+    padding-block: 8px;
+    background-color: rgb(251, 253, 255);
+    border-radius: 8px;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.icon img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.themes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.themes .theme {
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.themes .active {
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 4px 3px rgb(106, 79, 255);
+}

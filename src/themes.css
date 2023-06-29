@@ -1,0 +1,39 @@
+.theme1 {
+    background-image: url('./assets/themes/theme1.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.theme2 {
+    background-image: url('./assets/themes/theme2.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.theme3 {
+    background-image: url('./assets/themes/theme3.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.theme4 {
+    background-image: url('./assets/themes/theme4.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.theme5 {
+    background-image: url('./assets/themes/theme5.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
