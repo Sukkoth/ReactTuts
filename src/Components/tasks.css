@@ -28,6 +28,11 @@
     background-color: rgb(106, 79, 255);
 }
 
+.tasksHeader button:hover {
+    box-shadow: 0 0 6px 1px rgb(106, 79, 255);
+    cursor: pointer;
+}
+
 .tasksCount {
     background-color: rgb(225, 223, 222);
     border-radius: 50%;
