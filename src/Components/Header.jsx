@@ -10,15 +10,14 @@ const Header = ({ backgroundTheme, setBackgroundTheme }) => {
 
             <div className='themes'>
                 {themes.map((theme) => (
-                    <img
+                    <div
                         className={`theme ${
                             theme.name === backgroundTheme ? 'active' : ''
-                        }`}
+                        } ${theme.name}`}
                         onClick={() => setBackgroundTheme(theme.name)}
-                        src={theme.path}
                         alt={theme.name}
                         key={theme.id}
-                    />
+                    ></div>
                 ))}
             </div>
         </nav>
