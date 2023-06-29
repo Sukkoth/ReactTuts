@@ -1,7 +1,7 @@
 .addTask {
     border-radius: 8px;
     background-color: rgb(251, 253, 255);
-    width: 460px;
+    width: 490px;
     margin-inline: auto;
     margin-block: 30px;
     padding-block: 10px;
@@ -22,7 +22,8 @@ input:focus {
     box-shadow: 0 0 4px 2px rgb(225, 231, 236);
 }
 
-.addButton {
+.addButton,
+.clearEditing {
     background-color: rgb(39, 182, 39);
     color: white;
     font-size: larger;
@@ -35,5 +36,16 @@ input:focus {
 
 .addButton:hover {
     box-shadow: 0 0 6px 1px rgb(39, 182, 39);
+    cursor: pointer;
+}
+
+.clearEditing {
+    margin-block: 12px;
+    background-color: rgb(106, 79, 255);
+    margin-inline: calc(100% / 2.6);
+}
+
+.clearEditing:hover {
+    box-shadow: 0 0 6px 1px rgb(106, 79, 255);
     cursor: pointer;
 }

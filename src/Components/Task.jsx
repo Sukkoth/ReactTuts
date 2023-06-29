@@ -1,7 +1,7 @@
 import React from 'react';
-import task from './task.css';
+import './task.css';
 
-const Task = ({ task }) => {
+const Task = ({ task, handleDeleteTask, setEditing }) => {
     return (
         <div className={`task ${task.completed ? 'completed' : 'pending'}`}>
             <div className='details'>
@@ -9,10 +9,10 @@ const Task = ({ task }) => {
                 <p className='reminder'>{task.reminder}</p>
             </div>
             <div className='actions'>
-                <p className='edit'>
+                <p className='edit' onClick={() => setEditing(task)}>
                     <i className='fa-regular fa-pen-to-square'></i>
                 </p>
-                <p className='delete'>
+                <p className='delete' onClick={() => handleDeleteTask(task.id)}>
                     <i className='fa-solid fa-trash-can'></i>
                 </p>
             </div>

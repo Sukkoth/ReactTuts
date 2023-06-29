@@ -4,6 +4,7 @@ import './themes.css';
 import AddTask from './Components/AddTask';
 import Header from './Components/Header';
 import Tasks from './Components/Tasks';
+import sampleData from './sampleData';
 
 const setInitialTheme = () => {
     const savedTheme = localStorage.getItem('theme');
@@ -13,9 +14,34 @@ const setInitialTheme = () => {
 function App() {
     const [backgroundTheme, setBackgroundTheme] = useState(setInitialTheme);
     const [tasks, setTasks] = useState([]);
+    const [editing, setEditing] = useState({});
+
+    const updateTasks = (newTasks) => {
+        localStorage.setItem('tasks', JSON.stringify(newTasks));
+        setTasks(newTasks);
+    };
 
     const handleAddTask = (task) => {
-        //TODO continue from, here
+        const newTasks = [
+            ...tasks,
+            { ...task, id: tasks[tasks.length - 1].id + 1 || 1 },
+        ];
+        updateTasks(newTasks);
+    };
+
+    const handleUpdateTask = (newTask) => {
+        console.log('NEW TASK', newTask);
+        const newTasks = tasks.map((task) => {
+            return task.id === newTask.id ? newTask : task;
+        });
+        updateTasks(newTasks);
+    };
+
+    const handleDeleteTask = (taskId) => {
+        const newTasks = tasks.filter((task) => {
+            return task.id != taskId;
+        });
+        updateTasks(newTasks);
     };
 
     useEffect(() => {
@@ -38,9 +64,15 @@ function App() {
                 />
                 <AddTask
                     handleAddTask={handleAddTask}
-                    tasksLength={tasks.length}
+                    handleUpdateTask={handleUpdateTask}
+                    editTask={editing}
+                    setEditing={setEditing}
                 />
-                <Tasks tasks={tasks} />
+                <Tasks
+                    tasks={tasks}
+                    handleDeleteTask={handleDeleteTask}
+                    setEditing={setEditing}
+                />
             </main>
         </div>
     );

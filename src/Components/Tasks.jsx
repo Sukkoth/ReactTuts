@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import tasks from './tasks.css';
+import './tasks.css';
 import Task from './Task';
-import sampleData from '../sampleData';
 
-const Tasks = ({ tasks }) => {
+const Tasks = ({ tasks, handleDeleteTask, setEditing }) => {
     return (
         <>
             <div className='tasksHeader'>
@@ -19,7 +18,14 @@ const Tasks = ({ tasks }) => {
 
             <div className='tasks'>
                 {tasks
-                    ? tasks.map((task) => <Task key={task.id} task={task} />)
+                    ? tasks.map((task) => (
+                          <Task
+                              key={task.id}
+                              task={task}
+                              handleDeleteTask={handleDeleteTask}
+                              setEditing={setEditing}
+                          />
+                      ))
                     : 'No tasks'}
             </div>
         </>
