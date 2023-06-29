@@ -45,6 +45,7 @@ function App() {
     };
 
     const clearAllTasks = () => {
+        console.log('clikced');
         updateTasks([]);
     };
 

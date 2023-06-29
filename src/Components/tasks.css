@@ -28,9 +28,15 @@
     background-color: rgb(106, 79, 255);
 }
 
-.tasksHeader button:hover {
+.tasksHeader .enabled:hover {
     box-shadow: 0 0 6px 1px rgb(106, 79, 255);
     cursor: pointer;
+}
+
+.tasksHeader .disabled {
+    border-color: rgb(143, 125, 248);
+    background-color: rgb(143, 125, 248);
+    cursor: not-allowed;
 }
 
 .tasksCount {
@@ -52,4 +58,11 @@
     color: rgb(255, 79, 114);
     font-weight: bolder;
     font-size: x-large;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .tasks {
+        flex-direction: column;
+    }
 }

@@ -9,7 +9,11 @@ const Tasks = ({ tasks, handleDeleteTask, setEditing, clearAllTasks }) => {
                 <p>
                     Todo <span className='tasksCount'> {tasks.length}</span>
                 </p>
-                <button className='clear' onClick={clearAllTasks}>
+                <button
+                    className={`clear ${tasks.length ? 'enabled' : 'disabled'}`}
+                    onClick={clearAllTasks}
+                    disabled={tasks.length ? false : true}
+                >
                     Clear all
                 </button>
             </div>

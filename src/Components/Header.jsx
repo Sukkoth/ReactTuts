@@ -5,7 +5,8 @@ const Header = ({ backgroundTheme, setBackgroundTheme }) => {
     return (
         <nav className='header'>
             <div className='icon'>
-                <img className='icon' src={icon} alt='icon' /> <p>Taskmate</p>
+                <img className='icon' src={icon} alt='icon' />{' '}
+                <p className='title'>Taskmate</p>
             </div>
 
             <div className='themes'>

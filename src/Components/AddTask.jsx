@@ -27,6 +27,8 @@ const AddTask = ({ handleAddTask, editTask, setEditing, handleUpdateTask }) => {
                 handleUpdateTask(taskData);
                 setTask('');
                 setEditing({});
+            } else {
+                inputRef.current.focus();
             }
         } else {
             if (task) {
@@ -37,6 +39,8 @@ const AddTask = ({ handleAddTask, editTask, setEditing, handleUpdateTask }) => {
                 };
                 handleAddTask(taskData);
                 setTask('');
+            } else {
+                inputRef.current.focus();
             }
         }
     };
