@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import './tasks.css';
 import Task from './Task';
 
-const Tasks = ({ tasks, handleDeleteTask, setEditing }) => {
+const Tasks = ({ tasks, handleDeleteTask, setEditing, clearAllTasks }) => {
     return (
         <>
             <div className='tasksHeader'>
                 <p>
                     Todo <span className='tasksCount'> {tasks.length}</span>
                 </p>
-                <button className='clear'>Clear all</button>
+                <button className='clear' onClick={clearAllTasks}>
+                    Clear all
+                </button>
             </div>
 
             <div className='divider'>
@@ -17,16 +19,18 @@ const Tasks = ({ tasks, handleDeleteTask, setEditing }) => {
             </div>
 
             <div className='tasks'>
-                {tasks
-                    ? tasks.map((task) => (
-                          <Task
-                              key={task.id}
-                              task={task}
-                              handleDeleteTask={handleDeleteTask}
-                              setEditing={setEditing}
-                          />
-                      ))
-                    : 'No tasks'}
+                {tasks.length ? (
+                    tasks.map((task) => (
+                        <Task
+                            key={task.id}
+                            task={task}
+                            handleDeleteTask={handleDeleteTask}
+                            setEditing={setEditing}
+                        />
+                    ))
+                ) : (
+                    <p className='noTasks'>No tasks</p>
+                )}
             </div>
         </>
     );

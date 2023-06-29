@@ -42,3 +42,9 @@
     width: 75%;
     margin-block: 0;
 }
+
+.noTasks {
+    color: rgb(255, 79, 114);
+    font-weight: bolder;
+    font-size: x-large;
+}

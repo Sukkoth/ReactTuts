@@ -24,7 +24,7 @@ function App() {
     const handleAddTask = (task) => {
         const newTasks = [
             ...tasks,
-            { ...task, id: tasks[tasks.length - 1].id + 1 || 1 },
+            { ...task, id: tasks[tasks.length - 1]?.id + 1 || 1 },
         ];
         updateTasks(newTasks);
     };
@@ -42,6 +42,10 @@ function App() {
             return task.id != taskId;
         });
         updateTasks(newTasks);
+    };
+
+    const clearAllTasks = () => {
+        updateTasks([]);
     };
 
     useEffect(() => {
@@ -69,6 +73,7 @@ function App() {
                     setEditing={setEditing}
                 />
                 <Tasks
+                    clearAllTasks={clearAllTasks}
                     tasks={tasks}
                     handleDeleteTask={handleDeleteTask}
                     setEditing={setEditing}
