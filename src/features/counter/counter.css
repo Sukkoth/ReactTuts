@@ -1,0 +1,22 @@
+.section {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    font-size: 100px;
+}
+
+.section p {
+    margin-bottom: 15px;
+}
+.buttons {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 25%;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+}

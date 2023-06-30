@@ -1,11 +1,7 @@
 import './App.css';
-
+import Counter from './features/counter/Counter';
 function App() {
-    return (
-        <>
-            <h1>App</h1>
-        </>
-    );
+    return <Counter />;
 }
 
 export default App;
