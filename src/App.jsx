@@ -6,6 +6,9 @@ import Header from './Components/Header';
 import Tasks from './Components/Tasks';
 import sampleData from './sampleData';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const setInitialTheme = () => {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme || 'theme1';
@@ -27,6 +30,7 @@ function App() {
             { ...task, id: tasks[tasks.length - 1]?.id + 1 || 1 },
         ];
         updateTasks(newTasks);
+        toast.success('Task added');
     };
 
     const handleUpdateTask = (newTask) => {
@@ -34,6 +38,7 @@ function App() {
             return task.id === newTask.id ? newTask : task;
         });
         updateTasks(newTasks);
+        toast.success('Task updated');
     };
 
     const handleMarkTaskComplete = (taskId) => {
@@ -51,10 +56,12 @@ function App() {
             return task.id != taskId;
         });
         updateTasks(newTasks);
+        toast.info('Task Deleted');
     };
 
     const clearAllTasks = () => {
         updateTasks([]);
+        toast.info('Tasks cleared');
     };
 
     useEffect(() => {
@@ -87,6 +94,12 @@ function App() {
                     handleDeleteTask={handleDeleteTask}
                     handleMarkTaskComplete={handleMarkTaskComplete}
                     setEditing={setEditing}
+                />
+                <ToastContainer
+                    position='top-right'
+                    autoClose={2500}
+                    closeOnClick
+                    theme='light'
                 />
             </main>
         </div>

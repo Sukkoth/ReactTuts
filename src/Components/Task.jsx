@@ -1,5 +1,6 @@
 import React from 'react';
 import './task.css';
+import TimeAgo from 'timeago-react';
 
 const Task = ({
     task,
@@ -16,7 +17,7 @@ const Task = ({
                 <p className={`taskName ${task.completed && 'completedText'}`}>
                     {task.task}
                 </p>
-                <p className='reminder'>{task.reminder}</p>
+                <TimeAgo className='reminder' datetime={task.reminder} />
             </div>
             <div className='actions'>
                 <p className='edit' onClick={() => setEditing(task)}>

@@ -3,6 +3,7 @@ import './addTask.css';
 
 const AddTask = ({ handleAddTask, editTask, setEditing, handleUpdateTask }) => {
     const [task, setTask] = useState('');
+    const [reminder, setReminder] = useState('');
     const inputRef = useRef(null);
 
     const clearEditingState = () => {
@@ -19,6 +20,7 @@ const AddTask = ({ handleAddTask, editTask, setEditing, handleUpdateTask }) => {
         if (editTask?.id) {
             inputRef.current.focus();
             setTask(editTask?.task);
+            setReminder(editTask?.reminder);
         }
     }, [editTask]);
 
@@ -26,9 +28,10 @@ const AddTask = ({ handleAddTask, editTask, setEditing, handleUpdateTask }) => {
         e.preventDefault();
         if (editTask?.id) {
             if (task) {
-                const taskData = { ...editTask, task };
+                const taskData = { ...editTask, task, reminder };
                 handleUpdateTask(taskData);
                 setTask('');
+                setReminder('');
                 setEditing({});
             } else {
                 inputRef.current.focus();
@@ -37,11 +40,12 @@ const AddTask = ({ handleAddTask, editTask, setEditing, handleUpdateTask }) => {
             if (task) {
                 const taskData = {
                     task: task,
-                    reminder: new Date().toISOString(),
+                    reminder: reminder || new Date().toISOString(),
                     completed: false,
                 };
                 handleAddTask(taskData);
                 setTask('');
+                setReminder('');
             } else {
                 inputRef.current.focus();
             }
@@ -56,6 +60,12 @@ const AddTask = ({ handleAddTask, editTask, setEditing, handleUpdateTask }) => {
                 value={task}
                 onKeyDown={(e) => e.key === 'Enter' && handleSubmit(e)}
                 onChange={(e) => setTask(e.target.value)}
+            />
+            <input
+                className='dateInput'
+                type='datetime-local'
+                value={reminder}
+                onChange={(e) => setReminder(e.target.value)}
             />
             <button className='addButton' onClick={handleSubmit}>
                 {editTask?.id ? 'Update' : 'Add'}
