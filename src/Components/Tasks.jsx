@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './tasks.css';
 import Task from './Task';
 
-const Tasks = ({ tasks, handleDeleteTask, setEditing, clearAllTasks }) => {
+const Tasks = ({
+    tasks,
+    handleDeleteTask,
+    setEditing,
+    clearAllTasks,
+    handleMarkTaskComplete,
+}) => {
     return (
         <>
             <div className='tasksHeader'>
@@ -30,6 +36,7 @@ const Tasks = ({ tasks, handleDeleteTask, setEditing, clearAllTasks }) => {
                             task={task}
                             handleDeleteTask={handleDeleteTask}
                             setEditing={setEditing}
+                            handleMarkTaskComplete={handleMarkTaskComplete}
                         />
                     ))
                 ) : (

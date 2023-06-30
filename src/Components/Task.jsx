@@ -1,11 +1,21 @@
 import React from 'react';
 import './task.css';
 
-const Task = ({ task, handleDeleteTask, setEditing }) => {
+const Task = ({
+    task,
+    handleDeleteTask,
+    setEditing,
+    handleMarkTaskComplete,
+}) => {
     return (
         <div className={`task ${task.completed ? 'completed' : 'pending'}`}>
-            <div className='details'>
-                <p className='taskName'>{task.task}</p>
+            <div
+                className='details'
+                onClick={() => handleMarkTaskComplete(task.id)}
+            >
+                <p className={`taskName ${task.completed && 'completedText'}`}>
+                    {task.task}
+                </p>
                 <p className='reminder'>{task.reminder}</p>
             </div>
             <div className='actions'>

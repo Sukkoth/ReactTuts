@@ -16,7 +16,6 @@ const AddTask = ({ handleAddTask, editTask, setEditing, handleUpdateTask }) => {
     }, []);
 
     useEffect(() => {
-        console.log('EDIT TASK', editTask);
         if (editTask?.id) {
             inputRef.current.focus();
             setTask(editTask?.task);
@@ -53,7 +52,7 @@ const AddTask = ({ handleAddTask, editTask, setEditing, handleUpdateTask }) => {
             <input
                 ref={inputRef}
                 type='text'
-                placeholder='add Task'
+                placeholder='add task'
                 value={task}
                 onKeyDown={(e) => e.key === 'Enter' && handleSubmit(e)}
                 onChange={(e) => setTask(e.target.value)}

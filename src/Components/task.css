@@ -18,8 +18,22 @@
     border-left: solid 6px rgb(255, 79, 114);
 }
 
+.details {
+    padding-inline: 10px;
+    cursor: pointer;
+}
+/* .details:hover {
+    cursor: pointer;
+    background-color: rgb(242, 244, 247);
+} */
+
 .taskName {
     font-weight: bold;
+}
+
+.details .completedText {
+    color: rgb(255, 79, 114);
+    text-decoration: line-through;
 }
 
 .reminder {

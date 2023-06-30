@@ -30,9 +30,18 @@ function App() {
     };
 
     const handleUpdateTask = (newTask) => {
-        console.log('NEW TASK', newTask);
         const newTasks = tasks.map((task) => {
             return task.id === newTask.id ? newTask : task;
+        });
+        updateTasks(newTasks);
+    };
+
+    const handleMarkTaskComplete = (taskId) => {
+        const newTasks = tasks.map((task) => {
+            if (task.id === taskId) {
+                return { ...task, completed: !task.completed };
+            }
+            return task;
         });
         updateTasks(newTasks);
     };
@@ -45,7 +54,6 @@ function App() {
     };
 
     const clearAllTasks = () => {
-        console.log('clikced');
         updateTasks([]);
     };
 
@@ -77,6 +85,7 @@ function App() {
                     clearAllTasks={clearAllTasks}
                     tasks={tasks}
                     handleDeleteTask={handleDeleteTask}
+                    handleMarkTaskComplete={handleMarkTaskComplete}
                     setEditing={setEditing}
                 />
             </main>
