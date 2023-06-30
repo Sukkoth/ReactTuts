@@ -4,7 +4,6 @@ import './themes.css';
 import AddTask from './Components/AddTask';
 import Header from './Components/Header';
 import Tasks from './Components/Tasks';
-import sampleData from './sampleData';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -66,9 +65,7 @@ function App() {
 
     useEffect(() => {
         const localData = JSON.parse(localStorage.getItem('tasks'));
-        if (!localData)
-            localStorage.setItem('tasks', JSON.stringify(sampleData));
-        setTasks(localData || sampleData);
+        setTasks(localData || []);
     }, []);
 
     useEffect(() => {
