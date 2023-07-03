@@ -65,7 +65,13 @@ function App() {
 
             {isLoading && <p>Loading . . .</p>}
 
-            <p>Quote generator by Sukkoth</p>
+            <a
+                className={`bg-color${color}`}
+                href='https://t.me/sukkoth'
+                title='Contact on telegram'
+            >
+                Quote generator by Sukkoth
+            </a>
         </div>
     );
 }

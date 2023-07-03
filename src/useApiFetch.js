@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const useApiFetch = () => {
-    const [loading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState([]);
     const [errors, setErrors] = useState({});
 
@@ -20,7 +20,7 @@ const useApiFetch = () => {
     }, []);
     return {
         data,
-        loading,
+        isLoading,
         errors,
     };
 };
