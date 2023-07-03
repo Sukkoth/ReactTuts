@@ -1,10 +1,12 @@
 import useSound from 'use-sound';
 
-const DrumKey = ({ drumKey, volume, setDisplay }) => {
+const DrumKey = ({ drumKey, volume, setDisplay, power }) => {
     const [play] = useSound(drumKey.audio, { volume });
     const playDrum = () => {
-        setDisplay(drumKey.display);
-        play();
+        if (power) {
+            setDisplay(drumKey.display);
+            play();
+        }
     };
     return (
         <button
@@ -19,6 +21,7 @@ const DrumKey = ({ drumKey, volume, setDisplay }) => {
 
 DrumKey.defaultProps = {
     keyLetter: 'Q',
+    power: true,
 };
 
 export default DrumKey;

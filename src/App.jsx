@@ -20,6 +20,7 @@ function App() {
                             drumKey={drumKey}
                             volume={volume}
                             setDisplay={setDisplay}
+                            power={power}
                         />
                     ))}
                 </div>
@@ -33,7 +34,7 @@ function App() {
                             switchOn={power}
                         />
                         <p className='display' id='display'>
-                            {display}
+                            {power && display}
                         </p>
                         <input
                             type='range'

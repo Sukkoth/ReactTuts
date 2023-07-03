@@ -8,7 +8,7 @@ const Switch = ({ title, eventHandler, switchOn }) => {
                 <div
                     className='switch-button'
                     style={{
-                        float: switchOn == true ? 'left' : 'right',
+                        float: switchOn == true ? 'right' : 'left',
                     }}
                 ></div>
             </div>
