@@ -1,7 +1,7 @@
 import useSound from 'use-sound';
 
-const DrumKey = ({ keyLetter, audio }) => {
-    const [play] = useSound(audio);
+const DrumKey = ({ keyLetter, audio, volume }) => {
+    const [play] = useSound(audio, { volume });
     const handleKeyboard = (e) =>
         e.key.toLowerCase() === 'q'
             ? console.log('Pressed')
