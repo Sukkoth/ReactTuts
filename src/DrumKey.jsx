@@ -2,18 +2,15 @@ import useSound from 'use-sound';
 
 const DrumKey = ({ drumKey, volume, setDisplay }) => {
     const [play] = useSound(drumKey.audio, { volume });
-    const handleKeyboard = (e) =>
-        e.key.toLowerCase() === 'q'
-            ? console.log('Pressed')
-            : console.log('Not pressed');
+    const playDrum = () => {
+        setDisplay(drumKey.display);
+        play();
+    };
     return (
         <button
             className='drum-pad'
-            onClick={() => {
-                setDisplay(drumKey.display);
-                play();
-            }}
-            onKeyDown={handleKeyboard}
+            onClick={playDrum}
+            id={drumKey.display.replace(' ', '-')}
         >
             {drumKey.key}
         </button>

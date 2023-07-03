@@ -1,55 +1,20 @@
 import './App.css';
-import useSound from 'use-sound';
 import DrumKey from './DrumKey';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import DrumPresets from './DrumPresets';
+import Switch from './Switch';
 
 function App() {
     const [volume, setVolume] = useState(0.1);
     const [display, setDisplay] = useState('Shaker');
-    const keys = [
-        { key: 'Q', display: 'Shaker', audio: 'src/assets/audio/Chord_1.mp3' },
-        {
-            key: 'W',
-            display: 'Shaker',
-            audio: 'src/assets/audio/Chord_2.mp3',
-        },
-        {
-            key: 'E',
-            display: 'Shaker',
-            audio: 'src/assets/audio/Chord_3.mp3',
-        },
-        {
-            key: 'A',
-            display: 'Shaker',
-            audio: 'src/assets/audio/Give_us_a_light.mp3',
-        },
-        {
-            key: 'S',
-            display: 'Shaker',
-            audio: 'src/assets/audio/Dry_Ohh.mp3',
-        },
-        { key: 'D', display: 'Shaker', audio: 'src/assets/audio/Bld_H1.mp3' },
-        {
-            key: 'Z',
-            display: 'Shaker',
-            audio: 'src/assets/audio/punchy_kick_1.mp3',
-        },
-        {
-            key: 'X',
-            display: 'Shaker',
-            audio: 'src/assets/audio/side_stick_1.mp3',
-        },
-        {
-            key: 'C',
-            display: 'Shaker',
-            audio: 'src/assets/audio/Brk_Snr.mp3',
-        },
-    ];
+    const [power, setPower] = useState(true);
+    const [banker, setBanker] = useState(0);
+
     return (
-        <main className='main' onKeyDown={() => console.log('Pressed')}>
+        <main className='main'>
             <section className='drumMachine' id='drumMachine'>
                 <div className='drumPanel'>
-                    {keys.map((drumKey, index) => (
+                    {DrumPresets[banker].map((drumKey, index) => (
                         <DrumKey
                             key={index}
                             drumKey={drumKey}
@@ -62,9 +27,11 @@ function App() {
                 <div className='controls-container'>
                     <img src='src/assets/drums.png' alt='icon' />
                     <div className='controls'>
-                        <div className='switch'>
-                            <div className='switch-button'></div>
-                        </div>
+                        <Switch
+                            title={'Power'}
+                            eventHandler={(e) => setPower((p) => !p)}
+                            switchOn={power}
+                        />
                         <p className='display' id='display'>
                             {display}
                         </p>
@@ -79,9 +46,19 @@ function App() {
                             className='volume-slider'
                             style={{ slid: 'red' }}
                         />
+                        <Switch
+                            title={'Bank'}
+                            eventHandler={() =>
+                                setBanker((b) => (b === 1 ? 0 : 1))
+                            }
+                            switchOn={banker}
+                        />
                     </div>
                 </div>
             </section>
+            <p>
+                Drums By <a href='https://t.me?sukkoth'>Sukkoth</a>
+            </p>
         </main>
     );
 }
