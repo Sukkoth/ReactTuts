@@ -1,4 +1,51 @@
 .main {
-    background-color: chocolate;
+    background-color: #8d8d8d;
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drumMachine {
+    min-width: 700px;
+    max-width: 800px;
+    border: solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    background-color: #b3b3b3;
+    border: solid 5px orange;
+}
+
+.drumPanel {
+    display: flex;
+    flex-flow: row wrap;
+    width: 370px;
+    justify-content: space-evenly;
+    padding: 20px 0 20px 0;
+}
+
+.drumPanel button {
+    width: 100px;
+    height: 75px;
+    margin-bottom: 15px;
+    background-color: grey;
+    box-shadow: 3px 3px 6px 1px rgb(59, 58, 58);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+}
+
+.controls-container img {
+    align-self: flex-end;
+    margin-right: 5px;
+    margin-top: 5px;
+    width: 40px;
 }
