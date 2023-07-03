@@ -62,9 +62,14 @@ function App() {
                         </p>
                         <input
                             type='range'
+                            min={0}
+                            max={10}
+                            value={volume * 10}
+                            onChange={(e) => setVolume(e.target.value / 10)}
                             name='volume'
                             id='volume'
                             className='volume-slider'
+                            style={{ slid: 'red' }}
                         />
                     </div>
                 </div>
