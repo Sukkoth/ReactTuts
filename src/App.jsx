@@ -5,35 +5,43 @@ import { useState } from 'react';
 
 function App() {
     const [volume, setVolume] = useState(0.1);
+    const [display, setDisplay] = useState('Shaker');
     const keys = [
-        { key: 'Q', audio: 'src/assets/audio/Chord_1.mp3' },
+        { key: 'Q', display: 'Shaker', audio: 'src/assets/audio/Chord_1.mp3' },
         {
             key: 'W',
+            display: 'Shaker',
             audio: 'src/assets/audio/Chord_2.mp3',
         },
         {
             key: 'E',
+            display: 'Shaker',
             audio: 'src/assets/audio/Chord_3.mp3',
         },
         {
             key: 'A',
+            display: 'Shaker',
             audio: 'src/assets/audio/Give_us_a_light.mp3',
         },
         {
             key: 'S',
+            display: 'Shaker',
             audio: 'src/assets/audio/Dry_Ohh.mp3',
         },
-        { key: 'D', audio: 'src/assets/audio/Bld_H1.mp3' },
+        { key: 'D', display: 'Shaker', audio: 'src/assets/audio/Bld_H1.mp3' },
         {
             key: 'Z',
+            display: 'Shaker',
             audio: 'src/assets/audio/punchy_kick_1.mp3',
         },
         {
             key: 'X',
+            display: 'Shaker',
             audio: 'src/assets/audio/side_stick_1.mp3',
         },
         {
             key: 'C',
+            display: 'Shaker',
             audio: 'src/assets/audio/Brk_Snr.mp3',
         },
     ];
@@ -44,9 +52,9 @@ function App() {
                     {keys.map((drumKey, index) => (
                         <DrumKey
                             key={index}
-                            keyLetter={drumKey.key}
-                            audio={drumKey.audio}
+                            drumKey={drumKey}
                             volume={volume}
+                            setDisplay={setDisplay}
                         />
                     ))}
                 </div>
@@ -58,7 +66,7 @@ function App() {
                             <div className='switch-button'></div>
                         </div>
                         <p className='display' id='display'>
-                            Smooth Piano Kit
+                            {display}
                         </p>
                         <input
                             type='range'
