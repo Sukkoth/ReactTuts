@@ -46,7 +46,7 @@ function App() {
                                 <i className='fa-brands fa-twitter'></i>
                             </a>
                             <a
-                                href={`https://t.me/share/?url=http://t.me.sukkoth&text=${quotes[showing]?.quote}`}
+                                href={`https://t.me/share/?url=http://t.me.sukkoth&text=${quotes[showing]?.quote} - ${quotes[showing]?.author}`}
                                 className={`bg-color${color}`}
                             >
                                 <i className='fa-brands fa-telegram'></i>
