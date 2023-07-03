@@ -1,0 +1,61 @@
+:root {
+    --main-color: #646cff;
+}
+.container {
+    background-color: var(--main-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color linear;
+}
+#quote-box {
+    min-width: 450px;
+    max-width: 25%;
+    padding: 2rem 3rem 2rem 3rem;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 10px;
+}
+
+button {
+    border-radius: 5px;
+    border: 1px solid transparent;
+    padding: 0.5em 0.7em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: var(--main-color);
+    color: white;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+button:hover {
+    border-color: var(--main-color) - 255;
+}
+
+a {
+    font-weight: 500;
+    color: white;
+    margin-right: 9px;
+    padding: 10px 20px;
+    text-decoration: inherit;
+    background-color: var(--main-color);
+}
+
+a:hover {
+    border-color: var(--main-color) - 255;
+}
+
+p {
+    color: white;
+}
