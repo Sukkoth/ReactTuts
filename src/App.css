@@ -1,0 +1,59 @@
+:root {
+    --button-color: #d3d04f;
+}
+.container {
+    margin: auto;
+    text-align: center;
+}
+
+.header {
+    padding: 20px;
+    border-bottom: solid 2px rgb(214, 209, 209);
+    background-color: #213363;
+    color: white;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.form input {
+    margin-right: 15px;
+    width: 200px;
+    height: 25px;
+    padding: 4px;
+    font-size: 18px;
+}
+input:focus {
+    background-color: rgb(234, 236, 238);
+}
+
+.form button {
+    padding: 1px 30px;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.note {
+    border: solid 2px gray;
+    width: 55%;
+}
+
+.note button {
+    padding: 10px 40px;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
