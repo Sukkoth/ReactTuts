@@ -49,11 +49,23 @@ input:focus {
     width: 55%;
 }
 
-.note button {
+button {
     padding: 10px 40px;
     background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.note button {
     margin-bottom: 10px;
+}
+
+.note button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 4px 2px #213363;
+    background-color: #213363;
+    color: white;
+    border-color: #d3d04f;
 }
