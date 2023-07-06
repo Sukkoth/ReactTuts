@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    deleteNoteAction,
+    fetchNotesAction,
+} from './redux/actions/notesActions';
 
 const Notes = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchNotesAction());
+    }, []);
+
+    const notes = useSelector((state) => state.notes);
+    const handleDelete = (id) => {
+        dispatch(deleteNoteAction(id));
+    };
+
     return (
         <div className='content'>
-            <h1>Notes List</h1>
-            <div className='note'>
-                <h2>Tilte</h2>
-                <p>Content</p>
-                <button>Delete</button>
-            </div>
+            <h1>Notes List {notes.length}</h1>
+            {notes.map((note) => (
+                <div className='note' key={note.id}>
+                    <h2>{note.title}</h2>
+                    <p>{note.content}</p>
+                    <button onClick={() => handleDelete(note.id)}>
+                        Delete
+                    </button>
+                </div>
+            ))}
         </div>
     );
 };

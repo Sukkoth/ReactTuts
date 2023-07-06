@@ -45,8 +45,9 @@ input:focus {
 }
 
 .note {
-    border: solid 2px gray;
+    border: solid 2px rgb(228, 225, 225);
     width: 55%;
+    margin-bottom: 20px;
 }
 
 button {
