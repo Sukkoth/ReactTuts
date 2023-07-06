@@ -12,9 +12,6 @@ const Notes = () => {
     }, []);
 
     const notes = useSelector((state) => state.notes);
-    const handleDelete = (id) => {
-        dispatch(deleteNoteAction(id));
-    };
 
     return (
         <div className='content'>
@@ -23,7 +20,7 @@ const Notes = () => {
                 <div className='note' key={note.id}>
                     <h2>{note.title}</h2>
                     <p>{note.content}</p>
-                    <button onClick={() => handleDelete(note.id)}>
+                    <button onClick={() => dispatch(deleteNoteAction(note.id))}>
                         Delete
                     </button>
                 </div>
