@@ -1,7 +1,9 @@
 import useSound from 'use-sound';
+import { useEffect, useCallback } from 'react';
 
 const DrumKey = ({ drumKey, volume, setDisplay, power }) => {
     const [play] = useSound(drumKey.audio, { volume });
+
     const playDrum = () => {
         if (power) {
             setDisplay(drumKey.display);
