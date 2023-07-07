@@ -1,4 +1,8 @@
-const { createAction } = require('@reduxjs/toolkit');
+const {
+    createAction,
+    createReducer,
+    configureStore,
+} = require('@reduxjs/toolkit');
 const { nanoid } = require('@reduxjs/toolkit');
 
 const initialState = {
@@ -8,21 +12,42 @@ const initialState = {
 const increment = createAction('INCREMENT');
 const decrement = createAction('DECREMENT');
 const reset = createAction('RESET');
-const incrementBy = createAction('INCREMENT_BY');
-const createNotes = createAction('CREATE_NOTE', (userId, title, content) => {
+const incrementBy = createAction('INCREMENT_BY', (amount) => {
     return {
         payload: {
-            id: nanoid(),
-            userId,
-            title,
-            content,
+            amount,
         },
     };
 });
-console.log(
-    createNotes(
-        1,
-        'Hello World',
-        'This is what you say when you just start messing around with some serious explosives'
-    )
-);
+console.log(incrementBy);
+
+// create reducer
+//1. Builder callback notation
+//2. Map object notation
+const counterSlice = createReducer(initialState, (builder) => {
+    builder.addCase(increment, (state) => {
+        state.count += 1;
+    });
+    builder.addCase(decrement, (state) => {
+        state.count -= 1;
+    });
+    builder.addCase(reset, (state) => {
+        state.count = 0;
+    });
+    builder.addCase(incrementBy, (state, action) => {
+        state.count = action.payload.amount;
+    });
+});
+
+const store = configureStore({
+    reducer: counterSlice,
+});
+
+//dispatch action
+store.dispatch(increment());
+
+console.log(store.getState());
+
+//createAction, const reset = createAction('RESET')
+//createReducer, const counterSlice = createReducer(initialState, (builder) => builder.addCase(actionName, (state) => {state.count+=1}))
+//configureStore const store = configureStore({reducer: counterSlice})
