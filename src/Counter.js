@@ -3,7 +3,6 @@ const {
     createReducer,
     configureStore,
 } = require('@reduxjs/toolkit');
-const { nanoid } = require('@reduxjs/toolkit');
 
 const initialState = {
     count: 0,
@@ -35,7 +34,7 @@ const counterSlice = createReducer(initialState, (builder) => {
         state.count = 0;
     });
     builder.addCase(incrementBy, (state, action) => {
-        state.count = action.payload.amount;
+        state.count += action.payload.amount;
     });
 });
 
@@ -45,8 +44,11 @@ const store = configureStore({
 
 //dispatch action
 store.dispatch(increment());
+store.dispatch(increment());
+store.dispatch(incrementBy(90));
+store.dispatch(decrement());
 
-console.log(store.getState());
+console.log(store.getState().count);
 
 //createAction, const reset = createAction('RESET')
 //createReducer, const counterSlice = createReducer(initialState, (builder) => builder.addCase(actionName, (state) => {state.count+=1}))
