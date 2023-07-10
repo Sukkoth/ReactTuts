@@ -8,8 +8,10 @@ const initialState = {
 };
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
-    const data = await axios.get('http://jsonplaceholder.typicode.com/posts');
-    return data;
+    const response = await axios.get(
+        'http://jsonplaceholder.typicode.com/posts'
+    );
+    return response.data;
 });
 
 const postsSlice = createSlice({
@@ -18,7 +20,7 @@ const postsSlice = createSlice({
     extraReducers: (builder) => {
         //hanlde lifecycle
 
-        builder.addCase(fetchPosts.pending, (state, action) => {
+        builder.addCase(fetchPosts.pending, (state) => {
             state.isLoading = true;
         });
 
@@ -28,7 +30,7 @@ const postsSlice = createSlice({
         });
 
         builder.addCase(fetchPosts.rejected, (state, action) => {
-            state.errors = action.payload;
+            state.errors = action.error;
             state.isLoading = false;
         });
     },

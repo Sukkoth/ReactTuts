@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -7,12 +7,13 @@ import {
     tasksSelector,
     toggleTask,
 } from './features/Tasks/tasksSlice';
+import { fetchPosts } from './features/Posts/postsSlice';
 
 function App() {
     const [task, setTask] = useState('');
     const dispatch = useDispatch();
-    const tasks = useSelector((state) => state.tasks);
-    const posts = useSelector((state) => state.posts);
+    const tasksData = useSelector((state) => state.tasks);
+    const postsData = useSelector((state) => state.posts);
     const inputRef = useRef();
 
     const handleSubmit = (e) => {
@@ -25,6 +26,10 @@ function App() {
         setTask('');
         inputRef.current.focus();
     };
+
+    useEffect(() => {
+        dispatch(fetchPosts());
+    }, []);
 
     return (
         <div className='container'>
@@ -43,10 +48,10 @@ function App() {
                 </form>
 
                 <div className='content'>
-                    <h3>Tasks {tasks.length}</h3>
+                    <h3>Tasks {tasksData.tasks.length}</h3>
                     <ul>
-                        {tasks &&
-                            tasks?.map((task) => (
+                        {tasksData.tasks &&
+                            tasksData.tasks?.map((task) => (
                                 <li
                                     onClick={() =>
                                         dispatch(toggleTask(task.id))
@@ -71,7 +76,14 @@ function App() {
                     </ul>
                 </div>
             </header>
-            <h2>{posts.length}</h2>
+            <h2>Posts: {postsData.posts.length}</h2>
+            {postsData.errors?.message && <h4>{postsData.errors?.message}</h4>}
+            {postsData.isLoading && <h4>Loading posts......</h4>}
+            <ul>
+                {postsData?.posts.map((post) => (
+                    <li key={post?.id}>{post?.title}</li>
+                ))}
+            </ul>
         </div>
     );
 }
