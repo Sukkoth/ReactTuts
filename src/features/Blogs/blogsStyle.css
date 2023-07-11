@@ -1,0 +1,92 @@
+.blogsMain {
+    /* border: solid 1px; */
+    width: 60%;
+    margin: auto;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.blogs {
+    padding: 1rem;
+    width: 70%;
+}
+
+.blogs .blog {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: solid 1px rgb(202, 199, 199);
+}
+.coverImage {
+    width: 20rem;
+    background-size: cover;
+    background-image: url('../../assets//cover.jpg');
+}
+
+.blog .content {
+    width: 85%;
+    text-align: left;
+    margin-left: 1rem;
+}
+
+.blog .content .date {
+    color: rgb(202, 199, 199);
+    font-size: smaller;
+}
+
+.blog .content .title {
+    margin-block: 7px;
+    font-size: xx-large;
+    width: 35rem;
+}
+
+.blog .content p {
+    margin-block: 7px;
+}
+
+.blog .content .continueReading {
+    color: var(--primary-orange);
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.sideBar {
+    width: 30%;
+}
+
+.sideBar {
+    display: block;
+}
+
+.sideBar .sideBarItem h2 {
+    margin-block: 7px;
+    font-size: xx-large;
+    background-color: #f3f3f3;
+    padding: 0.5rem;
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    text-align: center;
+    color: var(--primary-violet);
+}
+
+.sideBar .sideBarItem ul {
+    margin: 0;
+    padding: 0;
+}
+.sideBar .sideBarItem .itemList {
+    list-style: none;
+    margin-block: 7px;
+    background-color: #f3f3f3;
+    padding: 0.8rem 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+    text-transform: capitalize;
+}
+
+.sideBarIcon {
+    color: var(--primary-violet);
+    margin-right: 0.4rem;
+}
