@@ -10,11 +10,11 @@
     align-items: center;
     width: 60%;
     margin: auto;
-    padding-block: 0.5rem;
+    padding-block: 0.1rem;
 }
 
 .header img {
-    width: 5rem;
+    width: 4rem;
     padding-inline: 5rem;
 }
 
