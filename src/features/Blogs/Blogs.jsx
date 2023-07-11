@@ -47,34 +47,28 @@ const Blogs = () => {
                         <li className='itemList'>
                             <i class='fa-solid fa-business-time sideBarIcon'></i>
                             business
-                        </li>{' '}
+                        </li>
                         <li className='itemList'>
-                            {' '}
                             <i class='fa-solid fa-tv sideBarIcon'></i>
                             entertainment
                         </li>
                         <li className='itemList'>
-                            {' '}
                             <i class='fa-brands fa-intercom sideBarIcon'></i>
                             general
-                        </li>{' '}
+                        </li>
                         <li className='itemList'>
-                            {' '}
                             <i class='fa-sharp fa-solid fa-stethoscope sideBarIcon'></i>
                             health
-                        </li>{' '}
+                        </li>
                         <li className='itemList'>
-                            {' '}
                             <i class='fa-solid fa-flask sideBarIcon'></i>
                             science
                         </li>
                         <li className='itemList'>
-                            {' '}
                             <i class='fa-solid fa-futbol sideBarIcon'></i>
                             sports
-                        </li>{' '}
+                        </li>
                         <li className='itemList'>
-                            {' '}
                             <i class='fa-solid fa-microchip sideBarIcon'></i>
                             technology
                         </li>

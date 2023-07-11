@@ -77,6 +77,7 @@
     padding: 0;
 }
 .sideBar .sideBarItem .itemList {
+    cursor: pointer;
     list-style: none;
     margin-block: 7px;
     background-color: #f3f3f3;
