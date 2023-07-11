@@ -1,10 +1,16 @@
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
+import { useEffect } from 'react';
+import { fetchBlogs } from './features/Blogs/blogsSlice';
+import { clearAllListeners } from '@reduxjs/toolkit';
+import Blogs from './features/Blogs/Blogs';
+import Header from './Components/Header';
 
 function App() {
     return (
-        <>
-            <h1>App</h1>
-        </>
+        <div className='main'>
+            <Header />
+        </div>
     );
 }
 
