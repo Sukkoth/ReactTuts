@@ -19,7 +19,6 @@ const postsSlice = createSlice({
     initialState,
     extraReducers: (builder) => {
         //hanlde lifecycle
-
         builder.addCase(fetchPosts.pending, (state) => {
             state.isLoading = true;
         });
