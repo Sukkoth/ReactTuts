@@ -1,18 +1,15 @@
 import React from 'react';
+import formatDate from '../../utils/formatDate';
 
-const Blog = () => {
+const Blog = ({ blog }) => {
     return (
         <div className='blog'>
             <div className='coverImage'></div>
             <div className='content'>
-                <p className='date'>July 10, 2023</p>
-                <h3 className='title'>
-                    Trader Joe’s Sun-Dried Tomato Focaccia Turkey Sandwich
-                </h3>
+                <p className='date'>{formatDate(blog?.publishedAt)}</p>
+                <h3 className='title'>{blog?.title}</h3>
                 <p className='blogContent'>
-                    Pillowy sun-dried tomato focaccia gets piled with pesto
-                    mayo, turkey, juicy tomato slices, and greens. This sandwich
-                    is a beauty and practically a lifestyle!
+                    {blog?.description?.substring(0, 200)}.....
                 </p>
                 <h4 className='continueReading'>Continue Reading</h4>
             </div>

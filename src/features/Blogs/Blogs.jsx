@@ -1,20 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './blogsStyle.css';
 import coverImage from '../../assets/cover.jpg';
 import Blog from './Blog';
 import Pagination from '../../Components/Pagination';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBlogs } from './blogsSlice';
 const Blogs = () => {
+    const dispatch = useDispatch();
+    const blogs = useSelector((state) => state.blogs);
+    const [queryOptions, setQueryOptions] = useState({
+        pageSize: 5,
+        page: 5,
+        sources: 'bbc-news,cnn,abc-news,al-jazeera-english',
+        q: null,
+        category: null,
+    });
+
+    const handlePageChange = (changePageTo) => {
+        setQueryOptions({ ...queryOptions, page: changePageTo });
+    };
+
+    useEffect(() => {
+        dispatch(fetchBlogs(queryOptions));
+    }, [queryOptions]);
     return (
         <div className='blogsMain'>
             <div className='blogs'>
-                <Blog />
-                <Blog />
-                <Blog />
-                <Blog />
-                <Blog />
-                <Blog />
-                <Pagination />
+                {blogs.isLoading && (
+                    <h3 style={{ textAlign: 'center' }}>Loading . . .</h3>
+                )}
+
+                {!blogs.isLoading &&
+                    blogs?.data?.articles &&
+                    blogs?.data?.articles.map((blog, index) => (
+                        <Blog blog={blog} key={index} />
+                    ))}
+                {!blogs.isLoading && blogs?.data?.articles && (
+                    <Pagination
+                        page={blogs?.data?.page || queryOptions.page}
+                        totalResults={blogs?.data?.totalResults}
+                        pageSize={queryOptions.pageSize || 5}
+                        handlePageChange={handlePageChange}
+                    />
+                )}
             </div>
+
             <div className='sideBar'>
                 <div className='sideBarItem'>
                     <h2>Sources</h2>

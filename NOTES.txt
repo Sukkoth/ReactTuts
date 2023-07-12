@@ -1,0 +1,28 @@
+Endpoints:
+    1) everything /v2/everything
+    2) Top-headlines /v2/top-headlines
+
+
+
+use everything => techcrunch.com
+use top-headlines [sources, q, language, country, category]
+
+options = {
+    sources: 'bbc-news',
+    q: null,
+    category, 
+}
+
+
+
+
+
+totalResults:20
+page:from user
+pageSize: 4
+
+last page = 20/4
+
+t 10
+s 5
+1, 2

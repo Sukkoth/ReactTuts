@@ -1,19 +1,25 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import sampleBlogs from './initialState';
-import axios from 'axios';
+import axios from '../../app/API/axios';
+import parseURL from '../../utils/parseURL';
 
 const initialState = {
     isLoading: false,
     errors: null,
     data: [],
+    options: {
+        totalPages: 0,
+        currentPage: 0,
+        lastPage: 0,
+    },
 };
 
-export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async () => {
-    const response = await axios.get(
-        'https://newsapi.org/v2/everything?q=keyword&apiKey=f59436d2f91b4a8c91ee0e698f392647'
-    );
-    return response.data;
-});
+export const fetchBlogs = createAsyncThunk(
+    'blogs/fetchBlogs',
+    async (options = 'default') => {
+        const response = await axios.get(`/top-headlines?${parseURL(options)}`);
+        return response.data;
+    }
+);
 
 const blogsSlice = createSlice({
     name: 'blogs',
