@@ -16,6 +16,7 @@ const initialState = {
 export const fetchBlogs = createAsyncThunk(
     'blogs/fetchBlogs',
     async (options = 'default') => {
+        console.log('options', parseURL(options));
         const response = await axios.get(`/top-headlines?${parseURL(options)}`);
         return response.data;
     }

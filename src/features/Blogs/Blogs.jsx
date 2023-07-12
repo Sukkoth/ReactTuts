@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './blogsStyle.css';
-import coverImage from '../../assets/cover.jpg';
 import Blog from './Blog';
 import Pagination from '../../Components/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,19 +9,30 @@ const Blogs = () => {
     const blogs = useSelector((state) => state.blogs);
     const [queryOptions, setQueryOptions] = useState({
         pageSize: 5,
-        page: 5,
-        sources: 'bbc-news,cnn,abc-news,al-jazeera-english',
+        page: 1,
+        sources: ['bbc-news', 'cnn', 'abc-news', 'al-jazeera-english'],
         q: null,
-        category: null,
+        category: [],
+        language: 'en',
     });
 
     const handlePageChange = (changePageTo) => {
         setQueryOptions({ ...queryOptions, page: changePageTo });
+        dispatch(fetchBlogs({ ...queryOptions, page: changePageTo }));
+    };
+
+    const handleCategories = (category) => {
+        let newCat = queryOptions.category;
+        newCat.includes(category)
+            ? (newCat = newCat.filter((c) => c !== category))
+            : newCat.push(category);
+        setQueryOptions({ ...queryOptions, category: newCat });
+        dispatch(fetchBlogs({ ...queryOptions, category: newCat }));
     };
 
     useEffect(() => {
         dispatch(fetchBlogs(queryOptions));
-    }, [queryOptions]);
+    }, []);
     return (
         <div className='blogsMain'>
             <div className='blogs'>
@@ -43,37 +53,63 @@ const Blogs = () => {
                         handlePageChange={handlePageChange}
                     />
                 )}
+                {!blogs.isLoading && blogs?.errors && (
+                    <h3 style={{ textAlign: 'center', color: 'red' }}>
+                        {blogs?.errors?.message}
+                    </h3>
+                )}
             </div>
 
             <div className='sideBar'>
                 <div className='sideBarItem'>
                     <h2>Categories</h2>
                     <ul>
-                        <li className='itemList'>
+                        <li
+                            className='itemList'
+                            onClick={() => handleCategories('business')}
+                        >
                             <i className='fa-solid fa-business-time sideBarIcon'></i>
                             business
                         </li>
-                        <li className='itemList'>
+                        <li
+                            className='itemList'
+                            onClick={() => handleCategories('entertainment')}
+                        >
                             <i className='fa-solid fa-tv sideBarIcon'></i>
                             entertainment
                         </li>
-                        <li className='itemList'>
+                        <li
+                            className='itemList'
+                            onClick={() => handleCategories('general')}
+                        >
                             <i className='fa-brands fa-intercom sideBarIcon'></i>
                             general
                         </li>
-                        <li className='itemList'>
+                        <li
+                            className='itemList'
+                            onClick={() => handleCategories('health')}
+                        >
                             <i className='fa-sharp fa-solid fa-stethoscope sideBarIcon'></i>
                             health
                         </li>
-                        <li className='itemList'>
+                        <li
+                            className='itemList'
+                            onClick={() => handleCategories('science')}
+                        >
                             <i className='fa-solid fa-flask sideBarIcon'></i>
                             science
                         </li>
-                        <li className='itemList'>
+                        <li
+                            className='itemList'
+                            onClick={() => handleCategories('sports')}
+                        >
                             <i className='fa-solid fa-futbol sideBarIcon'></i>
                             sports
                         </li>
-                        <li className='itemList'>
+                        <li
+                            className='itemList'
+                            onClick={() => handleCategories('technology')}
+                        >
                             <i className='fa-solid fa-microchip sideBarIcon'></i>
                             technology
                         </li>
@@ -84,85 +120,85 @@ const Blogs = () => {
                     <ul>
                         <li className='itemList'>
                             <input
-                                class='form-check-input'
+                                className='form-check-input'
                                 type='checkbox'
                                 value=''
                                 id=''
                             />
-                            <label class='form-check-label' for=''>
-                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                            <label className='form-check-label' htmlFor=''>
+                                <i className='fa-solid fa-newspaper sideBarIcon'></i>
                                 CNN
                             </label>
                         </li>
                         <li className='itemList'>
                             <input
-                                class='form-check-input'
+                                className='form-check-input'
                                 type='checkbox'
                                 value=''
                                 id=''
                             />
-                            <label class='form-check-label' for=''>
-                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                            <label className='form-check-label' htmlFor=''>
+                                <i className='fa-solid fa-newspaper sideBarIcon'></i>
                                 BBC
                             </label>
                         </li>
                         <li className='itemList'>
                             <input
-                                class='form-check-input'
+                                className='form-check-input'
                                 type='checkbox'
                                 value=''
                                 id=''
                             />
-                            <label class='form-check-label' for=''>
-                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                            <label className='form-check-label' htmlFor=''>
+                                <i className='fa-solid fa-newspaper sideBarIcon'></i>
                                 Al Jazeera English
                             </label>
                         </li>
                         <li className='itemList'>
                             <input
-                                class='form-check-input'
+                                className='form-check-input'
                                 type='checkbox'
                                 value=''
                                 id=''
                             />
-                            <label class='form-check-label' for=''>
-                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                            <label className='form-check-label' htmlFor=''>
+                                <i className='fa-solid fa-newspaper sideBarIcon'></i>
                                 Associated Press
                             </label>
                         </li>
                         <li className='itemList'>
                             <input
-                                class='form-check-input'
+                                className='form-check-input'
                                 type='checkbox'
                                 value=''
                                 id=''
                             />
-                            <label class='form-check-label' for=''>
-                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                            <label className='form-check-label' htmlFor=''>
+                                <i className='fa-solid fa-newspaper sideBarIcon'></i>
                                 BBC Sport
                             </label>
                         </li>
                         <li className='itemList'>
                             <input
-                                class='form-check-input'
+                                className='form-check-input'
                                 type='checkbox'
                                 value=''
                                 id=''
                             />
-                            <label class='form-check-label' for=''>
-                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                            <label className='form-check-label' htmlFor=''>
+                                <i className='fa-solid fa-newspaper sideBarIcon'></i>
                                 B Bild
                             </label>
                         </li>
                         <li className='itemList'>
                             <input
-                                class='form-check-input'
+                                className='form-check-input'
                                 type='checkbox'
                                 value=''
                                 id=''
                             />
-                            <label class='form-check-label' for=''>
-                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                            <label className='form-check-label' htmlFor=''>
+                                <i className='fa-solid fa-newspaper sideBarIcon'></i>
                                 ABC News
                             </label>
                         </li>
