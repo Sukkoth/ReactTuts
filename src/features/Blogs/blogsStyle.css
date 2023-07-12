@@ -26,6 +26,12 @@
     background-image: url('../../assets//cover.jpg');
 }
 
+.coverImage:hover {
+    filter: drop-shadow(5px 5px 10px rgb(65, 64, 64));
+    transition: all 300ms linear;
+    cursor: pointer;
+}
+
 .blog .content {
     width: 85%;
     text-align: left;
@@ -42,6 +48,10 @@
     font-size: xx-large;
     width: 35rem;
 }
+.blog .content .title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 .blog .content p {
     margin-block: 7px;
@@ -51,6 +61,11 @@
     color: var(--primary-orange);
     text-transform: uppercase;
     font-weight: bolder;
+    cursor: pointer;
+}
+
+.blog .content .continueReading:hover {
+    color: black;
 }
 
 .sideBar {
@@ -65,7 +80,7 @@
     margin-block: 7px;
     font-size: x-large;
     background-color: #f3f3f3;
-    padding: 0.5rem;
+    padding: 0.6rem;
     margin-top: 0;
     margin-bottom: 0.25rem;
     text-align: center;
@@ -85,6 +100,10 @@
     margin-top: 0;
     margin-bottom: 0.2rem;
     text-transform: capitalize;
+}
+
+.sideBar .sideBarItem .itemList:hover {
+    color: grey;
 }
 
 .sideBarIcon {
