@@ -47,7 +47,7 @@ const Blogs = () => {
 
             <div className='sideBar'>
                 <div className='sideBarItem'>
-                    <h2>Sources</h2>
+                    <h2>Categories</h2>
                     <ul>
                         <li className='itemList'>
                             <i className='fa-solid fa-business-time sideBarIcon'></i>
@@ -76,6 +76,95 @@ const Blogs = () => {
                         <li className='itemList'>
                             <i className='fa-solid fa-microchip sideBarIcon'></i>
                             technology
+                        </li>
+                    </ul>
+                </div>
+                <div className='sideBarItem'>
+                    <h2>Sources</h2>
+                    <ul>
+                        <li className='itemList'>
+                            <input
+                                class='form-check-input'
+                                type='checkbox'
+                                value=''
+                                id=''
+                            />
+                            <label class='form-check-label' for=''>
+                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                                CNN
+                            </label>
+                        </li>
+                        <li className='itemList'>
+                            <input
+                                class='form-check-input'
+                                type='checkbox'
+                                value=''
+                                id=''
+                            />
+                            <label class='form-check-label' for=''>
+                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                                BBC
+                            </label>
+                        </li>
+                        <li className='itemList'>
+                            <input
+                                class='form-check-input'
+                                type='checkbox'
+                                value=''
+                                id=''
+                            />
+                            <label class='form-check-label' for=''>
+                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                                Al Jazeera English
+                            </label>
+                        </li>
+                        <li className='itemList'>
+                            <input
+                                class='form-check-input'
+                                type='checkbox'
+                                value=''
+                                id=''
+                            />
+                            <label class='form-check-label' for=''>
+                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                                Associated Press
+                            </label>
+                        </li>
+                        <li className='itemList'>
+                            <input
+                                class='form-check-input'
+                                type='checkbox'
+                                value=''
+                                id=''
+                            />
+                            <label class='form-check-label' for=''>
+                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                                BBC Sport
+                            </label>
+                        </li>
+                        <li className='itemList'>
+                            <input
+                                class='form-check-input'
+                                type='checkbox'
+                                value=''
+                                id=''
+                            />
+                            <label class='form-check-label' for=''>
+                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                                B Bild
+                            </label>
+                        </li>
+                        <li className='itemList'>
+                            <input
+                                class='form-check-input'
+                                type='checkbox'
+                                value=''
+                                id=''
+                            />
+                            <label class='form-check-label' for=''>
+                                <i class='fa-solid fa-newspaper sideBarIcon'></i>
+                                ABC News
+                            </label>
                         </li>
                     </ul>
                 </div>
