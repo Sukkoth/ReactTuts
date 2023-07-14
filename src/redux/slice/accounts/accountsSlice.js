@@ -3,7 +3,7 @@ import baseURL from '../../../utils/baseURL';
 import axios from 'axios';
 
 const initialState = {
-    account: null,
+    account: {},
     accounts: [],
     error: null,
     loading: false,
@@ -44,10 +44,36 @@ export const createAccountAction = createAsyncThunk(
     }
 );
 
+//get single account
+
+export const getSingleAccountAction = createAsyncThunk(
+    'account/get-details',
+    async (id, { rejectWithValue, getState, dispatch }) => {
+        try {
+            //get token
+            const token = getState()?.users?.userAuth?.userInfo?.token;
+            //pass token to header
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+            //make request
+            const response = await axios.get(
+                `${baseURL}/accounts/${id}`,
+                config
+            );
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error?.response?.data);
+        }
+    }
+);
 const accountsSlice = createSlice({
     name: 'accounts',
     initialState,
     extraReducers: (builder) => {
+        //create account
         builder.addCase(createAccountAction.pending, (state) => {
             state.loading = true;
         });
@@ -57,6 +83,22 @@ const accountsSlice = createSlice({
             state.account = action.payload;
         });
         builder.addCase(createAccountAction.rejected, (state, action) => {
+            state.loading = false;
+            state.success = false;
+            state.account = null;
+            state.error = action.payload;
+        });
+
+        //get account detail
+        builder.addCase(getSingleAccountAction.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(getSingleAccountAction.fulfilled, (state, action) => {
+            state.loading = false;
+            state.success = true;
+            state.account = action.payload;
+        });
+        builder.addCase(getSingleAccountAction.rejected, (state, action) => {
             state.loading = false;
             state.success = false;
             state.account = null;
