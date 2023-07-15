@@ -44,6 +44,38 @@ export const createAccountAction = createAsyncThunk(
     }
 );
 
+//update account
+export const updateAccountAction = createAsyncThunk(
+    'account/update',
+    async (payload, { rejectWithValue, getState, dispatch }) => {
+        const { id, name, initialBalance, accountType, notes } = payload;
+        try {
+            //get token
+            const token = getState()?.users?.userAuth?.userInfo?.token;
+            //pass token to header
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+            //make request
+            const response = await axios.put(
+                `${baseURL}/accounts/${id}`,
+                {
+                    name,
+                    initialBalance,
+                    accountType,
+                    notes,
+                },
+                config
+            );
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error?.response?.data);
+        }
+    }
+);
+
 //get single account
 
 export const getSingleAccountAction = createAsyncThunk(
@@ -69,6 +101,8 @@ export const getSingleAccountAction = createAsyncThunk(
         }
     }
 );
+
+//slice
 const accountsSlice = createSlice({
     name: 'accounts',
     initialState,
@@ -103,6 +137,24 @@ const accountsSlice = createSlice({
             state.success = false;
             state.account = null;
             state.error = action.payload;
+        });
+
+        //update account
+        builder.addCase(updateAccountAction.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(updateAccountAction.fulfilled, (state, action) => {
+            state.loading = false;
+            state.success = true;
+            state.isUpdated = true;
+            state.account = action.payload;
+        });
+        builder.addCase(updateAccountAction.rejected, (state, action) => {
+            state.loading = false;
+            state.success = false;
+            state.account = null;
+            state.error = action.payload;
+            state.isUpdated = true;
         });
     },
 });
