@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import {
     getSingleAccountAction,
@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const EditAccount = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getSingleAccountAction(id));
@@ -18,8 +19,6 @@ const EditAccount = () => {
     const { account, loading, error, isUpdated } = useSelector(
         (state) => state?.accounts
     );
-
-    console.log('ACC', account);
 
     const [transaction, setTransaction] = useState({
         name: account?.data?.name,
@@ -39,8 +38,16 @@ const EditAccount = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(updateAccountAction({ id, ...transaction }));
-        console.log(transaction);
     };
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (isUpdated) {
+                navigate('/dashboard');
+                window.location.reload();
+            }
+        }, 2000);
+    }, [isUpdated]);
     return (
         <section className='py-16 xl:pb-56 bg-white overflow-hidden'>
             <div className='container px-4 mx-auto'>
@@ -48,9 +55,15 @@ const EditAccount = () => {
                     <h2 className='mb-4 text-4xl md:text-5xl text-center font-bold font-heading tracking-px-n leading-tight'>
                         Edit Account
                     </h2>
-                    <p className='mb-12 font-medium text-lg text-gray-600 leading-normal'>
+                    <p className='mb-3 font-medium text-lg text-gray-600 leading-normal'>
                         You are editing....{account?.data?.name} project
                     </p>
+                    {/* error */}
+                    {error && (
+                        <p className='mb-3 font-medium text-lg text-red-600 leading-normal'>
+                            {error}
+                        </p>
+                    )}
                     <form onSubmit={onSubmit}>
                         <label className='block mb-5'>
                             <input
@@ -119,12 +132,21 @@ const EditAccount = () => {
                                 />
                             </div>
                         </div>
-                        <button
-                            type='submit'
-                            className='mb-8 py-4 px-9 w-full text-white font-semibold border border-indigo-700 rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200'
-                        >
-                            Update Account
-                        </button>
+                        {loading ? (
+                            <button
+                                type='submit'
+                                className='mb-8 py-4 px-9 w-full text-white font-semibold border border-gray-700 rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200'
+                            >
+                                Loading
+                            </button>
+                        ) : (
+                            <button
+                                type='submit'
+                                className='mb-8 py-4 px-9 w-full text-white font-semibold border border-indigo-700 rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200'
+                            >
+                                Update Account
+                            </button>
+                        )}
                         <Link to={'/account/8'} className='font-medium'>
                             <a
                                 className='text-indigo-600 hover:text-indigo-700'
