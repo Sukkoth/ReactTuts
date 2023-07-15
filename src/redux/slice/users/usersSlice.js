@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import baseURL from '../../../utils/baseURL';
 
+//initial state
 const initialState = {
     loading: false,
     error: null,
