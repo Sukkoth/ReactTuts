@@ -3,22 +3,33 @@ import React from 'react';
 const AccountSummary = ({ profile }) => {
     //get all accounts
     const accounts = profile?.accounts;
-    console.log('accounts', accounts);
     //get all transactions
     const transactions = accounts?.map((account) => account?.transactions);
-    console.log('tr', transactions);
 
     //total income
     const totalIncome = transactions?.reduce((acc, transaction) => {
         return (
             acc +
             transaction
-                ?.filter(() => transaction?.transactionType === 'Income')
+                ?.filter(
+                    (transaction) => transaction?.transactionType === 'Income'
+                )
                 .reduce((acc, transaction) => acc + transaction?.amount, 0)
         );
     }, 0);
 
-    console.log('TOTAL INCOME', totalIncome);
+    //total epenses
+    const totalExpenses = transactions?.reduce((acc, transaction) => {
+        return (
+            acc +
+            transaction
+                ?.filter(
+                    (transaction) => transaction?.transactionType === 'Expenses'
+                )
+                .reduce((acc, transaction) => acc + transaction?.amount, 0)
+        );
+    }, 0);
+
     return (
         <>
             {profile.accounts?.length <= 0 ? (
@@ -41,7 +52,7 @@ const AccountSummary = ({ profile }) => {
                                     Total Income
                                 </h4>
                                 <span className='text-3xl lg:text-4xl font-bold text-green-600'>
-                                    $33,261
+                                    ${totalIncome}
                                 </span>
                             </div>
                             <div className='py-4 w-full md:w-1/2 lg:w-1/4 border-b md:border-b-0 lg:border-r'>
@@ -49,7 +60,7 @@ const AccountSummary = ({ profile }) => {
                                     Total Expenses
                                 </h4>
                                 <span className='text-3xl lg:text-4xl font-bold text-red-600'>
-                                    481,095
+                                    ${totalExpenses}
                                 </span>
                             </div>
                             <div className='py-4 w-full md:w-1/2 lg:w-1/4 border-b md:border-b-0 lg:border-r'>
@@ -57,7 +68,7 @@ const AccountSummary = ({ profile }) => {
                                     Total Balance
                                 </h4>
                                 <span className='text-3xl lg:text-4xl font-bold text-indigo-500'>
-                                    643,533
+                                    ${totalIncome - totalExpenses}
                                 </span>
                             </div>
                             <div className='py-4 w-full md:w-1/2 lg:w-1/4'>
@@ -65,7 +76,7 @@ const AccountSummary = ({ profile }) => {
                                     Total Transactions
                                 </h4>
                                 <span className='text-3xl lg:text-4xl font-bold'>
-                                    25%
+                                    {transactions?.length}
                                 </span>
                             </div>
                         </div>

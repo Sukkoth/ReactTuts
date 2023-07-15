@@ -40,9 +40,6 @@ const AccountDetails = () => {
     //total balance
     const totalBalance = totalIncome - totalExpenses;
 
-    console.log('SUM', totalBalance);
-    //filter
-    //reduce
     return (
         <>
             {error && (
