@@ -21,7 +21,6 @@ const Login = () => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
         dispatch(registerUserAction(formData));
-        console.log(formData);
     };
 
     //select store data

@@ -26,18 +26,60 @@ function App() {
                         </AuthRoute>
                     }
                 />
-                <Route path='/account' element={<AccountDetails />} />
-                <Route path='/account/:id' element={<AccountDetails />} />
+
+                <Route
+                    path='/account'
+                    element={
+                        <AuthRoute>
+                            <AccountDetails />
+                        </AuthRoute>
+                    }
+                />
+
+                <Route
+                    path='/account/:id'
+                    element={
+                        <AuthRoute>
+                            <AccountDetails />
+                        </AuthRoute>
+                    }
+                />
+
                 <Route
                     path='/add-transaction/:id'
-                    element={<AddTransaction />}
+                    element={
+                        <AuthRoute>
+                            <AddTransaction />
+                        </AuthRoute>
+                    }
                 />
                 <Route
                     path='/edit-transaction/:id'
-                    element={<EditTransaction />}
+                    element={
+                        <AuthRoute>
+                            <EditTransaction />
+                        </AuthRoute>
+                    }
                 />
-                <Route path='/add-account' element={<AddAccount />} />
-                <Route path='/edit-account/:id' element={<EditAccount />} />
+
+                <Route
+                    path='/add-account'
+                    element={
+                        <AuthRoute>
+                            <AddAccount />
+                        </AuthRoute>
+                    }
+                />
+
+                <Route
+                    path='/edit-account/:id'
+                    element={
+                        <AuthRoute>
+                            <EditAccount />
+                        </AuthRoute>
+                    }
+                />
+
                 <Route path='/login' element={<Login />} />
             </Routes>
         </BrowserRouter>

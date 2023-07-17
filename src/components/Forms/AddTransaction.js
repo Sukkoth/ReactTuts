@@ -26,7 +26,6 @@ const AddTransaction = () => {
     //---onsubmit handler----
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(transaction);
         dispatch(createTransactionAction({ ...transaction, id }));
     };
     return (

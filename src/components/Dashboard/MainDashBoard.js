@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AccountList from './AccountList';
-import AccountSummary from './AccountSummary';
+import AccountSummaryAAAA from './AccountSummary';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfileAction } from '../../redux/slice/users/usersSlice';
 
@@ -25,7 +25,7 @@ const MainDashBoard = () => {
                 </h2>
             ) : (
                 <>
-                    <AccountSummary profile={profile} />
+                    <AccountSummaryAAAA profile={profile} />
                     <AccountList profile={profile} />
                 </>
             )}
