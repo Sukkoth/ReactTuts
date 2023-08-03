@@ -17,13 +17,16 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
     border-bottom: solid 1px rgb(202, 199, 199);
 }
 .coverImage {
-    width: 20rem;
-    background-size: cover;
-    background-image: url('../../assets//cover.jpg');
+    width: 18rem;
+    object-fit: cover;
+}
+
+.coverImage img {
+    width: 100%;
 }
 
 .coverImage:hover {
@@ -106,7 +109,31 @@
     color: grey;
 }
 
+.sideBar .sideBarItem .active {
+    background-color: var(--primary-violet);
+    color: white;
+}
+
 .sideBarIcon {
     color: var(--primary-violet);
     margin-right: 0.4rem;
+}
+
+.btn-wrapper {
+    text-align: center;
+}
+
+.btn-wrapper button {
+    padding: 0.6rem 1rem;
+    width: 100%;
+    background-color: var(--primary-violet);
+    border: none;
+    font-size: 1rem;
+    font-weight: 800;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-wrapper button:hover {
+    background-color: #ad6794;
 }

@@ -42,7 +42,20 @@
     text-transform: uppercase;
 }
 
-.container .nav .searchIcon {
+.container .searchIcon {
     color: var(--primary-violet);
-    font-size: larger;
+}
+
+.searchBar {
+    border: none;
+    width: 15rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 17px;
+    font-family: 'Bitter', serif;
+    font-weight: 500;
+    border-bottom: solid 1px;
+}
+
+.searchBar:focus {
+    outline: none;
 }

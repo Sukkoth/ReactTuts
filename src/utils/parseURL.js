@@ -2,7 +2,7 @@ const parseURL = (options) => {
     let parsedURL = '?';
     Object.keys(options).forEach((option) => {
         if (options[option] !== null) {
-            if (option[option] === 'sources' || option[option] === 'category') {
+            if (option[option] === 'sources') {
                 parsedURL +=
                     '&' +
                     option[option].join(',') +
