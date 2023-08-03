@@ -46,6 +46,7 @@ const Blogs = ({ search }) => {
                 )}
 
                 {!blogs.isLoading &&
+                    !blogs?.errors &&
                     blogs?.data?.articles &&
                     blogs?.data?.articles.map((blog, index) => (
                         <Blog blog={blog} key={index} />
@@ -60,7 +61,7 @@ const Blogs = ({ search }) => {
                 )}
                 {!blogs.isLoading && blogs?.errors && (
                     <h3 style={{ textAlign: 'center', color: 'red' }}>
-                        {blogs?.errors?.message}
+                        ERROR WHILE FETCHING DATA, TRY AGAIN LATER
                     </h3>
                 )}
             </div>
