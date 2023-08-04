@@ -6,11 +6,6 @@ const initialState = {
     isLoading: false,
     errors: null,
     data: [],
-    options: {
-        totalPages: 0,
-        currentPage: 0,
-        lastPage: 0,
-    },
     queryOptions: {
         pageSize: 10,
         page: 1,
@@ -23,9 +18,20 @@ const initialState = {
 
 export const fetchBlogs = createAsyncThunk(
     'blogs/fetchBlogs',
-    async (options = 'default', { getState }) => {
+    async (_, { getState }) => {
         const response = await axios.get(
             `/top-headlines${parseURL(getState().blogs.queryOptions)}`
+        );
+        return response.data;
+    }
+);
+
+export const fetchSearch = createAsyncThunk(
+    'blogs/searchBlogs',
+    async (_, { getState }) => {
+        console.log(`/everything${parseURL(getState().blogs.queryOptions)}`);
+        const response = await axios.get(
+            `/everything${parseURL(getState().blogs.queryOptions)}`
         );
         return response.data;
     }
@@ -42,7 +48,11 @@ const blogsSlice = createSlice({
             state.queryOptions.language = 'en';
         },
         changePage(state, action) {
-            state.queryOptions.page = action.payload;
+            state.queryOptions.page = action.payload || 1;
+        },
+
+        updateQueryOptions(state, action) {
+            state.queryOptions = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -55,17 +65,34 @@ const blogsSlice = createSlice({
             state.data = action.payload;
             state.isLoading = false;
             state.errors = null;
-            // console.log(action.payload.totalResults);
-            // state.queryOptions.totalResults = action.payload?.totalResults;
         });
 
         builder.addCase(fetchBlogs.rejected, (state, action) => {
             state.errors = action.error;
             state.isLoading = false;
         });
+
+        //search
+
+        builder.addCase(fetchSearch.pending, (state, action) => {
+            state.isLoading = true;
+            state.errors = null;
+        });
+
+        builder.addCase(fetchSearch.fulfilled, (state, action) => {
+            state.data = action.payload;
+            state.isLoading = false;
+            state.errors = null;
+        });
+
+        builder.addCase(fetchSearch.rejected, (state, action) => {
+            state.errors = action.error;
+            state.isLoading = false;
+        });
     },
 });
 
-export const { updateSearchKey, changePage } = blogsSlice.actions;
+export const { updateSearchKey, changePage, updateQueryOptions } =
+    blogsSlice.actions;
 
 export default blogsSlice;

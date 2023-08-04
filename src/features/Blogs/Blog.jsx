@@ -9,12 +9,14 @@ const Blog = ({ blog }) => {
                 <img src={blog?.urlToImage || img} alt='' />
             </div>
             <div className='content'>
-                <p className='date'>{formatDate(blog?.publishedAt)}</p>
-                <h3 className='title'>{blog?.title}</h3>
-                <p className='blogContent'>
-                    {blog?.description?.substring(0, 200)}.....
+                <p className='date'>
+                    {formatDate(blog?.publishedAt)}, By {blog?.author}
                 </p>
-                <h4 className='continueReading'>Continue Reading</h4>
+                <h3 className='title'>{blog?.title}</h3>
+                <p className='blogContent'>{blog?.description}</p>
+                <a href={blog?.url} style={{ textDecoration: 'none' }}>
+                    <h4 className='continueReading'>Continue Reading</h4>
+                </a>
             </div>
         </div>
     );

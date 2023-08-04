@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import icon from '../assets/icon3.png';
 import './header.css';
 import { useDispatch } from 'react-redux';
-import { updateSearchKey, fetchBlogs } from '../features/Blogs/blogsSlice';
+import { updateSearchKey, fetchSearch } from '../features/Blogs/blogsSlice';
 const Header = ({ search, setSearch }) => {
     const dispatch = useDispatch();
     const handleSearch = () => {
         dispatch(updateSearchKey(search));
-        dispatch(fetchBlogs());
+        dispatch(fetchSearch());
     };
     return (
         <header className='header'>

@@ -1,10 +1,8 @@
 .blogsMain {
     /* border: solid 1px; */
-    width: 60%;
+    width: 70%;
     margin: auto;
     margin-top: 5rem;
-    display: flex;
-    flex-direction: row;
 }
 
 .blogs {
@@ -136,4 +134,19 @@
 
 .btn-wrapper button:hover {
     background-color: #ad6794;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.banner {
+    width: 60%;
+    height: 8rem;
+    border: solid 1px;
+    margin: auto;
+    /* padding: 2rem 3rem; */
+    margin-block: 8rem;
+    text-align: center;
 }

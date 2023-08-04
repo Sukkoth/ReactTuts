@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './pagination.css';
 const Pagination = ({ page, totalResults, pageSize, handlePageChange }) => {
+    if (totalResults === 0) return;
     return (
         <div className='pagination'>
             {/* Prev page */}
