@@ -143,10 +143,13 @@
 
 .banner {
     width: 60%;
-    height: 8rem;
     border: solid 1px;
     margin: auto;
-    /* padding: 2rem 3rem; */
-    margin-block: 8rem;
+    padding: 2rem 3rem;
+    margin-block: 5rem;
     text-align: center;
+    box-shadow: 10px 10px 50px 5px #f0eeef;
+    border-radius: 20px;
+    border: none;
+    text-transform: uppercase;
 }

@@ -47,7 +47,9 @@ const Blogs = () => {
 
     return (
         <div className='blogsMain'>
-            <div className='banner'>hello</div>
+            <div className='banner'>
+                <h1>Get world's biggest breaking and top headlines 📺</h1>
+            </div>
             <div className='main-content'>
                 <div className='blogs'>
                     {blogs.isLoading && (
